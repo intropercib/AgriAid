@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Monitoring System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h2>Live Plant Monitoring</h2>
+            <!-- left section for video -->
+            <div class="video-container">
+                <img id="video-feed" class="video-feed" src="{{ url_for('video_feed') }}" alt="Live Video Feed">
+                <div id="video-placeholder" class="video-placeholder">
+                    <span>Video Feed Not Available</span>
+                    <p>Please check your camera connection</p>
+                </div>
+            </div>
+        </div>
+        <!-- right section for data -->
+        <div class="right-panel">
+            <h2>Sensor Data</h2>
+            <pre id="sensor-data">Loading...</pre>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
