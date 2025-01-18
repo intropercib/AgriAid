@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+import cv2
 import numpy as np
 import os
 from typing import Tuple, List
@@ -42,12 +43,12 @@ class TomatoLeafClassifier:
         except Exception as e:
             raise ValueError(f"Failed to load model: {str(e)}")
 
-    def preprocess_image(self, img_path: str) -> np.ndarray:
+    def preprocess_image(self, img_array: np.ndarray) -> np.ndarray:
         """
         Preprocess an image for model prediction.
         
         Args:
-            img_path (str): Path to the image file
+            img_array (np.ndarray) : img_array
             
         Returns:
             np.ndarray: Preprocessed image array
@@ -56,19 +57,12 @@ class TomatoLeafClassifier:
             FileNotFoundError: If image file doesn't exist
             ValueError: If image format is invalid
         """
-        if not os.path.exists(img_path):
-            raise FileNotFoundError(f"Image file not found: {img_path}")
-            
-        try:
-            img = image.load_img(img_path, target_size=self.img_size)
-            img_array = image.img_to_array(img)
-            img_array = np.expand_dims(img_array, axis=0)
-            img_array = img_array / 255.0  # Normalize
-            return img_array
-        except Exception as e:
-            raise ValueError(f"Failed to process image: {str(e)}")
+        img_array = cv2.resize(img_array, self.img_size)
+        img_array = np.expand_dims(img_array, axis=0)
+        img_array = img_array / 255.0
+        return img_array
 
-    def predict(self, img_path: str) -> Tuple[str, float, dict]:
+    def predict(self, img_array: np.ndarray) -> Tuple[str, float, dict]:
         """
         Predict the disease class and confidence for a tomato leaf image.
         
@@ -82,7 +76,7 @@ class TomatoLeafClassifier:
             Exception: If prediction fails
         """
         try:
-            img_array = self.preprocess_image(img_path)
+            img_array = self.preprocess_image(img_array)
             predictions = self.model.predict(img_array, verbose=0)
             
             predicted_class_idx = np.argmax(predictions[0])
@@ -97,27 +91,3 @@ class TomatoLeafClassifier:
             
         except Exception as e:
             raise Exception(f"Prediction failed: {str(e)}")
-
-# test
-def main():
-    try:
-        classifier = TomatoLeafClassifier('model.h5')
-        
-        test_image = 'images/Tomato___Bacterial_spot/07458546-6893-49c8-b94f-edde706b19fa___GCREC_Bact.Sp 3835.JPG'
-
-        predicted_class, confidence, class_probs = classifier.predict(test_image)
-        print(f"\nSingle Image Prediction:")
-        print(f"Predicted Class: {predicted_class}")
-        print(f"Confidence: {confidence:.2f}%")
-        
-        # Print top 3 predictions
-        top_3 = sorted(class_probs.items(), key=lambda x: x[1], reverse=True)[:3]
-        print("\nTop 3 Predictions:")
-        for class_name, prob in top_3:
-            print(f"{class_name}: {prob:.2f}%")
-            
-    except Exception as e:
-        print(f"Error: {str(e)}")
-
-if __name__ == "__main__":
-    main()
