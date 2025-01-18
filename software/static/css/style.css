@@ -18,12 +18,12 @@ body {
 }
 
 .left-panel, .right-panel {
-    flex: 1;
     padding: 20px;
 }
 
 .left-panel {
     border-right: 1px solid #ddd;
+    width:60%;
 }
 
 h2 {
@@ -35,7 +35,7 @@ img {
     height: auto;
 }
 
-#sensor-data {
+.sensor-data {
     background-color: #f9f9f9;
     padding: 10px;
     border: 1px solid #ddd;
