@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Monitoring System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
     <div class="container">
         <div class="left-panel">
@@ -22,9 +24,22 @@
         <!-- right section for data -->
         <div class="right-panel">
             <h2>Sensor Data</h2>
-            <pre id="sensor-data">Loading...</pre>
+            <div class="right-top">
+                <pre class="sensor-data" id="conn-error">
+
+                </pre>
+                <pre class="sensor-data">
+                    <div>Temperature: <span id="temperature">Loading...</span></div>
+                </pre>
+            </div>
+            <div class="right-bottom">
+                <a href="/cure" class="button">
+                    Find the cure for disease
+                </a>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>
