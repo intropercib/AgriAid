@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const sensorDataElement = document.getElementById('sensor-data');
+    const temperatureDataElement = document.getElementById('temperature');
     const videoFeed = document.getElementById('video-feed');
     const videoPlaceholder = document.getElementById('video-placeholder');
+    const connErrorElement = document.getElementById('conn-error');
 
     // Hide placeholder initially
     videoPlaceholder.style.display = 'none';
@@ -32,17 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 console.log("Received data from backend:", data);
                 if (data.error) {
-                    sensorDataElement.textContent = `Error: ${data.error}`;
+                    connErrorElement.textContent = data.error;
+                    temperatureDataElement.textContent = `N/A`;
                 } else {
-                    sensorDataElement.textContent = `
-                        Key: ${data.key}
-                        Value: ${data.value}
-                    `;
+                    connErrorElement.style.display = 'none';
+                    temperatureDataElement.textContent = data.value;
                 }
             })
             .catch(error => {
                 console.error("Error fetching sensor data:", error);
-                sensorDataElement.textContent = 'Error fetching sensor data: ' + error.message;
+                temperatureDataElement.textContent = 'Error fetching sensor data: ' + error.message;
             });
     }
 
