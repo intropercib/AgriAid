@@ -8,8 +8,10 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/User/OneDrive/Desktop/AiPlant/hardware/include",
-                "C:/Users/User/OneDrive/Desktop/AiPlant/hardware/src",
+                "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/include",
+                "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/src",
+                "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/.pio/libdeps/uno/DHT sensor library",
+                "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/.pio/libdeps/uno/Adafruit Unified Sensor",
                 "C:/Users/User/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/User/.platformio/packages/framework-arduino-avr/variants/standard",
                 "C:/Users/User/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -22,8 +24,10 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/User/OneDrive/Desktop/AiPlant/hardware/include",
-                    "C:/Users/User/OneDrive/Desktop/AiPlant/hardware/src",
+                    "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/include",
+                    "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/src",
+                    "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/.pio/libdeps/uno/DHT sensor library",
+                    "C:/Users/User/OneDrive/Desktop/AgriAid/hardware/.pio/libdeps/uno/Adafruit Unified Sensor",
                     "C:/Users/User/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/User/.platformio/packages/framework-arduino-avr/variants/standard",
                     "C:/Users/User/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",

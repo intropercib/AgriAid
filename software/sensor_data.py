@@ -49,13 +49,14 @@ class SensorData:
         """
         Read the latest data from the Arduino via serial communication.
 
-        This method reads data from the serial port if available. The data is expected to be
-        in the format "key: value". If the data is valid, it is parsed and returned as a JSON
-        string. If no data is available or the data is invalid, an error message is returned.
+        This method reads all available lines from the serial port, parses them, and returns
+        the data as a single JSON object. If no data is available or the data is invalid,
+        an error message is returned.
 
         Returns:
             str: A JSON string containing the parsed data or an error message.
-                  Example: {"key": "sensor1", "value": 123} or {"error": "No data available"}.
+                  Example: {"Temperature": 25, "Humidity": 60, "CO2": 400, "Moisture": 50}
+                           or {"error": "No data available"}.
 
         Raises:
             serial.SerialException: If there is an issue with the serial port.
@@ -67,20 +68,21 @@ class SensorData:
         try:
             time.sleep(0.1)  # Add a small delay to allow data to arrive
             if self.serial_conn.in_waiting > 0:
-                line = self.serial_conn.readline().decode('utf-8').strip()
-                print(f"Received raw data: {line}")
-
-                if ": " in line:
-                    key, value = line.split(": ")
-                    try:
-                        value = int(value)
-                        json_data = {"key": key, "value": value}
-                        print(f"Parsed data: {json_data}")
-                        return json.dumps(json_data)
-                    except ValueError:
-                        return json.dumps({"error": "Invalid value format"})
+                data = {}
+                while self.serial_conn.in_waiting > 0:
+                    line = self.serial_conn.readline().decode('utf-8').strip()
+                    print(f"Received raw data: {line}")
+                    if ": " in line:
+                        key, value = line.split(": ")
+                        try:
+                            value = float(value)  # Convert value to float
+                            data[key] = value
+                        except ValueError:
+                            print(f"Invalid value format: {line}")
+                if data:
+                    return json.dumps(data)
                 else:
-                    return json.dumps({"error": "Invalid data format"})
+                    return json.dumps({"error": "No valid data available"})
             else:
                 return json.dumps({"error": "No data available"})
         except serial.SerialException as e:

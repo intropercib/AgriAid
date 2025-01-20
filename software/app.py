@@ -4,9 +4,8 @@ from sensor_data import SensorData
 
 app = Flask(__name__)
 
-# Initialize classes for video processing and sensor data
-video_processor = VideoProcessor(video_url="http://192.168.18.7:8080/video", model_path="models/model.h5")
-sensor_data = SensorData(port='COM5', baudrate=9600, timeout=1) 
+video_processor = VideoProcessor(video_url="http://192.168.79.148:8080/video", model_path="models/model.h5")
+sensor_data = SensorData(port='COM6', baudrate=9600, timeout=1) 
 
 def generate_video_feed():
     for frame in video_processor.generate_frames():
@@ -37,5 +36,4 @@ def get_sensor_data():
     return data
 
 if __name__ == '__main__':
-
-    app.run(debug=False)
+    app.run(debug=False, port=5000)

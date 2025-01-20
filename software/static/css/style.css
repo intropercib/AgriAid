@@ -25,6 +25,9 @@ body {
     border-right: 1px solid #ddd;
     width:60%;
 }
+.right-panel {
+    width: 40%;
+}
 
 h2 {
     margin-bottom: 20px;
@@ -74,4 +77,83 @@ img {
 
 #video-feed.hidden {
     display: none;
+}
+.button{
+    padding: 10px 20px;
+    background-color: rgb(135, 188, 56);
+    color: #fff;
+    font-family: inherit;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: transparent;
+    height: 30px;
+    width:fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button:hover{
+    background-color: rgba(135, 188, 56, 0.801);
+}
+.container-cure {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add padding for better spacing */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Use auto instead of scroll */
+}
+
+.sensor-data-list pre {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: inherit;
+}
+
+.disease-item {
+    display: flex;
+    margin: 20px 0; /* Adjust margin for better spacing */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 300px; /* Use min-height instead of max-height */
+}
+
+.disease-image {
+    flex: 1;
+    background: #f9f9f9;
+}
+
+.disease-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.disease-info {
+    flex: 2;
+    padding: 20px;
+}
+
+.disease-info h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.disease-info ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.disease-info li {
+    margin-bottom: 8px;
 }

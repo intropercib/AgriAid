@@ -21,8 +21,9 @@ class VideoProcessor:
         self.frame_width, self.frame_height = 880, 500
         self.prediction_interval = prediction_interval
         self.frame_counter = 0
-        self.last_prediction = None
+        # self.last_prediction = None
         self.last_prediction_updated_at = 0
+        self.predictions = {}
         self.contours = [
             (50, 80), 
             (550, 80),
@@ -86,25 +87,29 @@ class VideoProcessor:
             Exception: If an error occurs during prediction or frame processing.
         """
         self.frame_counter += 1
+        
         if self.frame_counter - self.last_prediction_updated_at >= self.prediction_interval:
-            for (x, y) in self.contours:
+            for i, (x, y) in enumerate(self.contours):
                 w, h = self.contour_size
                 roi = frame[y:y + h, x:x + w]
 
                 try:
                     predicted_class, confidence, _ = self.classifier.predict(roi)
-                    self.last_prediction = (predicted_class, confidence)
+                    # self.last_prediction = (predicted_class, confidence)
+                    self.predictions[i] = (predicted_class, confidence)
                     self.prediction_updated_at = self.frame_counter 
                 except Exception as e:
                     print(f"Prediction failed for ROI at ({x}, {y}): {str(e)}")
 
-        if self.last_prediction:
-            predicted_class, confidence = self.last_prediction
-            for (x, y) in self.contours:
+        # if self.last_prediction:
+        # predicted_class, confidence = self.last_prediction
+        for i, (x, y) in enumerate(self.contours):
+            if i in self.predictions:
                 w, h = self.contour_size
+                predicted_class, confidence = self.predictions[i]
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                label = f"{x} ::{predicted_class}: {confidence:.2f}%"
-                cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+                label = f"{predicted_class}: {confidence:.2f}%"
+                cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
         return frame
 

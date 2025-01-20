@@ -1,16 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cure for Disease</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-    <div class="container">
+    <div class="container-cure">
         <h1>Cure for Disease</h1>
-        <p>This page provides information on how to cure plant diseases.</p>
         <a href="/" class="button">Go Back to Home</a>
+
+        <!-- Tomato Bacterial Spot -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/bacterial_spot.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Bacterial Spot</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Small, water-soaked spots on leaves and fruits.</li>
+                    <li>Yellow halos around the spots.</li>
+                    <li>Lesions that coalesce to form larger necrotic areas.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Use disease-free seeds.</li>
+                    <li>Apply copper-based fungicides.</li>
+                    <li>Rotate crops to reduce bacterial build-up.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Early Blight -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/early_blight.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Early Blight</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Dark, concentric spots on lower leaves.</li>
+                    <li>Yellowing of leaves around the lesions.</li>
+                    <li>Premature leaf drop.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Prune affected leaves.</li>
+                    <li>Apply fungicides containing chlorothalonil.</li>
+                    <li>Practice crop rotation and mulching.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Late Blight -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/late_blight.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Late Blight</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Dark, water-soaked spots on leaves and stems.</li>
+                    <li>Fruits develop brown, firm patches.</li>
+                    <li>White fungal growth under leaves in humid conditions.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Destroy infected plants immediately.</li>
+                    <li>Apply fungicides containing mancozeb or chlorothalonil.</li>
+                    <li>Use resistant tomato varieties.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Leaf Mold -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/leaf_mold.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Leaf Mold</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Yellowish-green spots on upper leaf surfaces.</li>
+                    <li>Grayish-purple mold on the undersides of leaves.</li>
+                    <li>Leaves may curl and die.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Improve air circulation around plants.</li>
+                    <li>Apply fungicides containing chlorothalonil.</li>
+                    <li>Remove and destroy infected plant debris.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Septoria Leaf Spot -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/septoria_leaf_spot.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Septoria Leaf Spot</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Small, circular spots with gray centers and dark edges.</li>
+                    <li>Yellowing and browning of leaves.</li>
+                    <li>Premature defoliation.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Remove infected leaves and debris.</li>
+                    <li>Apply fungicides containing copper or mancozeb.</li>
+                    <li>Avoid overhead watering.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Spider Mites -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/twospotted_spidermites.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Spider Mites</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Tiny yellow or white speckles on leaves.</li>
+                    <li>Fine webbing on the undersides of leaves.</li>
+                    <li>Leaves may turn brown and fall off.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Spray plants with water to dislodge mites.</li>
+                    <li>Apply insecticidal soap or neem oil.</li>
+                    <li>Introduce natural predators like ladybugs.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Target Spot -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/target_spot.png') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Target Spot</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Dark, concentric rings on leaves and fruits.</li>
+                    <li>Lesions may have a "bullseye" appearance.</li>
+                    <li>Premature leaf drop.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Remove and destroy infected plant parts.</li>
+                    <li>Apply fungicides containing chlorothalonil.</li>
+                    <li>Practice crop rotation.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Yellow Leaf Curl Virus -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/yellow_leaf_curl_virus.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Yellow Leaf Curl Virus</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Yellowing and upward curling of leaves.</li>
+                    <li>Stunted plant growth.</li>
+                    <li>Reduced fruit production.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Use resistant tomato varieties.</li>
+                    <li>Control whitefly populations (the virus vector).</li>
+                    <li>Remove and destroy infected plants.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tomato Mosaic Virus -->
+        <div class="disease-item">
+            <div class="disease-image">
+                <img src="{{ url_for('static', filename='images/mosiac_virus.jpg') }}" alt="Bacterial Spot">
+            </div>
+            <div class="disease-info">
+                <h2>Tomato - Mosaic Virus</h2>
+                <p><strong>Symptoms:</strong></p>
+                <ul>
+                    <li>Mottled light and dark green patches on leaves.</li>
+                    <li>Leaf distortion and stunted growth.</li>
+                    <li>Reduced fruit yield and quality.</li>
+                </ul>
+                <p><strong>Cure:</strong></p>
+                <ul>
+                    <li>Use virus-free seeds and transplants.</li>
+                    <li>Disinfect tools and hands after handling infected plants.</li>
+                    <li>Remove and destroy infected plants.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>
