@@ -7,13 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const videoPlaceholder = document.getElementById('video-placeholder');
     const connErrorElement = document.getElementById('conn-error');
 
-    // Debugging: Log elements to ensure they are found
-    console.log("Temperature element:", temperatureDataElement);
-    console.log("Humidity element:", humidityDataElement);
-    console.log("Moisture element:", moistureDataElement);
-    console.log("CO2 element:", co2DataElement);
-    console.log("Connection error element:", connErrorElement);
-
     // Hide placeholder initially
     if (videoPlaceholder) {
         videoPlaceholder.style.display = 'none';

@@ -3,9 +3,11 @@ from video_processor import VideoProcessor
 from sensor_data import SensorData
 
 app = Flask(__name__)
-
+# initialize the VideoProcessor and SensorData classes
+#   ** NOTE : CHANGE THE URL BASED ON THE IP OF YOUR CAM FEED 
+#             CHANGE THE PORT TO THE CURRENTLY CONNECTED PORT  **
 video_processor = VideoProcessor(video_url="http://192.168.79.148:8080/video", model_path="models/model.h5")
-sensor_data = SensorData(port='COM6', baudrate=9600, timeout=1) 
+sensor_data = SensorData(port='COM8', baudrate=9600, timeout=1) 
 
 def generate_video_feed():
     for frame in video_processor.generate_frames():

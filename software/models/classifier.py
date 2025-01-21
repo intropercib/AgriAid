@@ -4,10 +4,10 @@ from tensorflow.keras.preprocessing import image
 import cv2
 import numpy as np
 import os
-from typing import Tuple, List
+from typing import Tuple, Dict, List
 
 class TomatoLeafClassifier:
-    """A classifier for tomato leaf diseases using a trained deep learning model."""
+    """Classifier for tomato leaf diseases using a trained deep learning model."""
     
     # Class labels as in model training
     CLASS_LABELS = [
@@ -25,55 +25,54 @@ class TomatoLeafClassifier:
 
     def __init__(self, model_path: str):
         """
-        Initialize the classifier with a trained model.
-        
+        Initializes the classifier with a trained model.
+
         Args:
-            model_path (str): Path to the saved model file (.h5 format)
-        
+            model_path (str): Path to the saved model file (.h5 format).
+
         Raises:
-            FileNotFoundError: If model file doesn't exist
-            ValueError: If model file is invalid
+            FileNotFoundError: If the model file does not exist.
+            ValueError: If the model file is invalid.
         """
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Model file not found: {model_path}")
             
         try:
             self.model = load_model(model_path)
-            self.img_size = (224, 224) 
+            self.img_size = (224, 224)  # Input size for the model
         except Exception as e:
             raise ValueError(f"Failed to load model: {str(e)}")
 
     def preprocess_image(self, img_array: np.ndarray) -> np.ndarray:
         """
-        Preprocess an image for model prediction.
-        
+        Preprocesses an image for model prediction.
+
         Args:
-            img_array (np.ndarray) : img_array
-            
+            img_array (np.ndarray): Input image array.
+
         Returns:
-            np.ndarray: Preprocessed image array
-            
+            np.ndarray: Preprocessed image array.
+
         Raises:
-            FileNotFoundError: If image file doesn't exist
-            ValueError: If image format is invalid
+            ValueError: If the image format is invalid.
         """
         img_array = cv2.resize(img_array, self.img_size)
         img_array = np.expand_dims(img_array, axis=0)
-        img_array = img_array / 255.0
+        img_array = img_array / 255.0  # Normalize pixel values
         return img_array
 
-    def predict(self, img_array: np.ndarray) -> Tuple[str, float, dict]:
+    def predict(self, img_array: np.ndarray) -> Tuple[str, float, Dict[str, float]]:
         """
-        Predict the disease class and confidence for a tomato leaf image.
-        
+        Predicts the disease class and confidence for a tomato leaf image.
+
         Args:
-            img_path (str): Path to the image file
-            
+            img_array (np.ndarray): Input image array.
+
         Returns:
-            Tuple[str, float, dict]: Predicted class, confidence percentage, and all class probabilities
-            
+            Tuple[str, float, Dict[str, float]]: Predicted class, confidence percentage, and all class probabilities.
+
         Raises:
-            Exception: If prediction fails
+            Exception: If prediction fails.
         """
         try:
             img_array = self.preprocess_image(img_array)

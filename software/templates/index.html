@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Monitoring System</title>
+    <title>AgriAid</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
@@ -28,10 +28,10 @@
                 <pre class="sensor-data" id="conn-error">
                 </pre>
                 <pre class="sensor-data sensor-data-list">
-                    <div>Temperature: <span id="temperature">Loading...</span></div>
-                    <div>Humidity: <span id="humidity">Loading...</span></div>
-                    <div>Moisture: <span id="moisture">Loading...</span></div>
-                    <div>CO2: <span id="co2">Loading...</span></div>
+                    <div>Temperature: <span id="temperature">Loading...</span> deg C</div>
+                    <div>Humidity: <span id="humidity">Loading...</span> %</div>
+                    <div>Moisture: <span id="moisture">Loading...</span> %</div>
+                    <div>CO2: <span id="co2">Loading...</span> ppm</div>
                 </pre>
             </div>
             <div class="right-bottom">

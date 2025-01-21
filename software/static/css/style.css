@@ -99,14 +99,14 @@ img {
 .container-cure {
     width: 90%;
     height: 100%;
-    margin: 0 auto; /* Center the container */
-    padding: 20px; /* Add padding for better spacing */
+    margin: 0 auto; 
+    padding: 20px; 
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto; /* Use auto instead of scroll */
+    overflow-y: auto; 
 }
 
 .sensor-data-list pre {
@@ -117,14 +117,14 @@ img {
 
 .disease-item {
     display: flex;
-    margin: 20px 0; /* Adjust margin for better spacing */
+    margin: 20px 0;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     width: 100%;
     max-width: 800px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-height: 300px; /* Use min-height instead of max-height */
+    min-height: 300px; 
 }
 
 .disease-image {
