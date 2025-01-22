@@ -104,7 +104,7 @@ git clone https://github.com/intropercib/AgriAid.git
 cd AgriAid
 ```
 
-Refer to the [`hardware/README.md`](hardware/Readme.md) and [`software/README.md`](software/Readme.md) files for detailed instructions on setting up the hardware and software components.
+Refer to the [`hardware/README.md`](hardware/README.md) and [`software/README.md`](software/README.md) files for detailed instructions on setting up the hardware and software components.
 
 ---
 <div style="text-align:center; font-size:16px; font-weight:bold;">
