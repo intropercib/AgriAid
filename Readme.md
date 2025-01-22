@@ -90,10 +90,10 @@ To set up and run the AgriAid system, follow these steps:
    - Install Arduino IDE or PlatformIO.
    - Ensure you have all components listed
    - Make sure listed components are connected properly
-   - Check the circuit diagram for reference [here](hardware/Readme.md)
+   - Check the circuit diagram for reference [here](hardware/README.md)
 
 2. **Software Requirements:**
-   - Install the necessary libraries as mentioned in [here](software/Readme.md)
+   - Install the necessary libraries as mentioned in [here](software/README.md)
 
 ### Installation Steps
 
